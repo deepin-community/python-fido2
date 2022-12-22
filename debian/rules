@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=fido2
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_clean:
+	chmod a-x fido2.egg-info/*
+	dh_clean
+
+override_dh_installchangelogs:
+	dh_installchangelogs NEWS
